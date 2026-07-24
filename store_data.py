@@ -26,6 +26,7 @@ def loadFile():
         pI["problems"] = file.readline().strip().split("; ")
         gI["currentDay"], gI["currentMonth"], gI["year"], gI["day"] = [int(x) if x.isdigit() else x for x in file.readline().strip().split(" ")]
         pI["school"] = [int(x) for x in file.readline().split(" ")]
+        pI["job"] = [int(x) if x.isdigit() else x for x in file.readline().strip().split("; ")]
     return filePath, pI, gI
 
 def saveGame(filePath, pI = dict(), gI = dict(), firstTime = False):
@@ -46,7 +47,8 @@ def saveGame(filePath, pI = dict(), gI = dict(), firstTime = False):
         pI["hunger"] = 50
         pI["happiness"] = 80
         gI["day"] = choice(days)
-        pI["school"] = [0, 0, 0, 0, 0, 0] # STEM, lang, social, sport/arts/music, exam No.
+        pI["school"] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] # STEM, lang, social, sport/arts/music, exam No., diploma, 4 field scores
+        pI["job"] = [100, False, 0, 0, 0, 0, 0] # Job, HS diploma, Pay, 4 field experience
         print(f"\nHello {pI["name"]}, You are a {"boy" if pI["gender"] == "Male" else "girl"} born on {gI["day"]} {pI["birthDay"]:02d}/{pI["birthMonth"]:02d} (dd/mm)! ")
         print(f"Your family's current status is {getStatus(pI["status"])}. ")
         file = open(filePath, "x")
@@ -57,6 +59,8 @@ def saveGame(filePath, pI = dict(), gI = dict(), firstTime = False):
     file.write(f"{"; ".join(pI["problems"])}\n")
     file.write(f"{gI["currentDay"]} {gI["currentMonth"]} {gI["year"]} {gI["day"]}\n")
     file.write(f"{" ".join([str(x) for x in pI["school"]])}\n")
+    file.write(f"{"; ".join([str(x) for x in pI["job"]])}")
+
     print("Game saved")
     file.close()
     return pI, gI
