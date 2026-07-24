@@ -11,11 +11,11 @@ def checkCommand(age, command):
     elif age < 6:
         if valid(command, ["eat", "sleep", "play", "observe", "talk", "enroll", "attend"]): return True
     elif age < 13:
-        if valid(command, ["eat", "sleep", "play", "study", "talk", "relax", "enroll", "attend", "entertain", "hobby", "wish"]): return True
+        if valid(command, ["eat", "sleep", "play", "study", "talk", "relax", "apply", "attend", "entertain", "hobby", "wish"]): return True
     elif age < 18:
-        if valid(command, ["eat", "sleep", "play", "study", "talk", "relax", "enroll", "attend", "entertain", "hobby", "work", "therapy", "wish"]): return True
-    elif age < 65:
-        if valid(command, ["eat", "sleep", "play", "talk", "relax", "enroll", "entertain", "hobby", "work", "therapy", "buy"]): return True
+        if valid(command, ["eat", "sleep", "play", "study", "talk", "relax", "apply", "attend", "entertain", "hobby", "work", "therapy", "wish"]): return True
+    else:
+        if valid(command, ["eat", "sleep", "play", "talk", "relax", "apply", "entertain", "hobby", "work", "therapy", "buy"]): return True
     
     # ["eat", "sleep", "play", "observe", "study", "talk", "enroll", "attend", "relax", "entertain", "hobby", "wish", "work", "therapy", "buy"]
     return False
